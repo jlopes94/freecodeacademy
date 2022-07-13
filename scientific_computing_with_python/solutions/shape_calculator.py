@@ -5,8 +5,10 @@ class Rectangle:
         self.height = height
 
     def __str__(self):
-        f"""Rectangle(width={self.width}, height={self.height})"""
-        return
+        return f"Rectangle(width={self.width}, height={self.height})"
+
+    def __int__(self):
+        return self.width, self.height
 
     def set_width(self, width):
         self.width = width
@@ -29,39 +31,43 @@ class Rectangle:
         # if too big, skip and print response
         if self.height > 50 or self.width > 50:
             return "Too big for picture."
-        # if small enough to not have empty space, print easily
-        if self.height <= 2:
-            while counts < self.height:
-                p += ("*" * self.width) + "\n"
-                counts += 1
-            return print(p)
-        elif self.width <= 2:
-            while counts < self.height:
-                p += ("*" * self.width) + "\n"
-                counts += 1
-            return print(p)
-        # otherwise, print with respect to empty spaces
+
         else:
-            wdots = "*" * self.width
-            hdots = "*" + (' ' * (self.width - 2)) + "*"
-            # print top width line
-            p += wdots + "\n"
-            # print height lines
-            while counts + 2 < self.height:
-                p += hdots + "\n"
-                counts += 1
-            # print bottom width line
-            p += wdots
-            return print(p)
+            p = ("*" * self.width + "\n") * self.height
+        return p
 
-    # def get_amount_inside(self):
-    # how many times a shape could fit inside of this rectangle. a rectangle with a width of 4 and a height
-    # of 8 could fit in two squares with sides of 4.
+    def get_amount_inside(self, shape):
+        if self.get_area() < shape.get_area():
+            return 0
+        else:
+            return int(self.get_area() / shape.get_area())
 
 
-#  first arg width, second height
-dog = Rectangle(4, 4)
+class Square(Rectangle):
 
-print(dog.get_picture())
+    def __init__(self, side, width=None, height=None):
+        super().__init__(width, height)
+        self.side = side
+        self.width = self.side
+        self.height = self.side
 
-# class Square:
+    def __str__(self):
+        return f"Square(side={self.side})"
+
+    def set_width(self, side):
+        self.side = side
+        self.width = self.side
+        self.height = self.side
+
+    def set_height(self, side):
+        self.side = side
+        self.width = self.side
+        self.height = self.side
+
+    def set_side(self, side):
+        self.side = side
+        self.width = side
+        self.height = side
+
+# dog = Square(4)
+# print(dog.get_area())
