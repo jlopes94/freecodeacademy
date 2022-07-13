@@ -162,7 +162,7 @@ print(clothing)
 print("\n") # just because it looks nicer :)
 #  testing spendchart
 
-# for testing spend graph
+# for testing spend graph locally
 # print(create_spend_chart([food, clothing, auto]))
 
 #  replit testing
