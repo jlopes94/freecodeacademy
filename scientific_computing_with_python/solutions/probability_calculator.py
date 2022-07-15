@@ -41,7 +41,6 @@ class Hat:
 def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
     success = 0
     for i in range(num_experiments):
-        ball_dict = {}
         # make sure contents don't actually get deleted from the hat
         new_hat = copy.deepcopy(hat)
         # make sure the desired outcome don't get deleted from input
